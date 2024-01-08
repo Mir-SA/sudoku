@@ -62,7 +62,6 @@ module.exports = function (app) {
 
   app.route("/api/solve").post((req, res) => {
     string = req.body.puzzle;
-    let solver = new SudokuSolver(string);
 
     if (string == null || string == "") {
       res.send({ error: "Required field missing" });
@@ -71,6 +70,7 @@ module.exports = function (app) {
     } else if (!regex.test(string)) {
       res.send({ error: "Invalid characters in puzzle" });
     } else {
+      let solver = new SudokuSolver(string);
       let sol = solver.solve(solver.grid);
       // console.log("Grid: ", sol);
       if (sol.solved === false) {

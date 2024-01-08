@@ -20,8 +20,6 @@ class SudokuSolver {
   }
 
   checkRowPlacement(grid, row, col, value) {
-    // let grid = this.validate(puzzleString);
-
     // console.log('Value: ', grid[row][col-1])
     if (grid[row][col] === parseInt(value)) {
       return true;
@@ -35,9 +33,7 @@ class SudokuSolver {
   }
 
   checkColPlacement(grid, row, col, value) {
-    // let grid = this.validate(puzzleString);
-
-    if (grid[row][col - 1] === parseInt(value)) {
+    if (grid[row][col] === parseInt(value)) {
       return true;
     } else {
       for (let i = 0; i < 9; i++) {
@@ -50,7 +46,6 @@ class SudokuSolver {
   }
 
   checkRegionPlacement(grid, row, col, value) {
-    // let grid = this.validate(puzzleString);
     const startRow = Math.floor(row / 3) * 3;
     const startCol = Math.floor(col / 3) * 3;
     // console.log(startRow, startCol, value);
@@ -81,9 +76,6 @@ class SudokuSolver {
   }
 
   solveSudoku(grid) {
-    // let grid = this.validate(puzzleString);
-    // console.log(grid);
-
     for (let row = 0; row < 9; row++) {
       for (let col = 0; col < 9; col++) {
         if (parseInt(grid[row][col]) === 0) {
